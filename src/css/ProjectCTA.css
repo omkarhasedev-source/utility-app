@@ -1,0 +1,115 @@
+/* --- GLOBAL RESET --- */
+* {
+  box-sizing: border-box;
+}
+
+/* --- SECTION CONTAINER --- */
+.project-cta-section {
+  background-color: rgba(211, 207, 207, 0.938); 
+  width: 100%;
+  padding: 140px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+
+.cta-content-wrapper {
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- TYPOGRAPHY --- */
+.cta-sublabel {
+  font-size: 1.75rem;
+  color: #888888; 
+  font-weight: 400;
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+
+.cta-heading {
+  font-size: 4rem;
+  font-weight: 400;
+  color: #000000;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-top: 0;
+  margin-bottom: 50px;
+}
+
+/* --- BUTTON --- */
+.btn-start-project {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 18px 36px;
+  border-radius: 100px; 
+  font-size: 1rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-start-project:hover {
+  background-color: #000000;
+  transform: scale(1.05); 
+}
+
+
+
+   /* RESPONSIVE BREAKPOINTS  */
+
+/* --- TABLET (≤ 992px) --- */
+@media screen and (max-width: 992px) {
+  .project-cta-section {
+    padding: 100px 20px;
+  }
+
+  .cta-sublabel {
+    font-size: 1.5rem;
+  }
+
+  .cta-heading {
+    font-size: 3rem;
+  }
+}
+
+/* --- MOBILE (≤ 576px) --- */
+@media screen and (max-width: 576px) {
+  .project-cta-section {
+    padding: 80px 20px;
+    text-align: left; 
+    justify-content: flex-start;
+  }
+
+  .cta-content-wrapper {
+    align-items: flex-start; 
+    max-width: 100%;
+  }
+
+  .cta-sublabel {
+    font-size: 1.75rem; 
+    margin-bottom: 5px;
+  }
+
+  .cta-heading {
+    font-size: 2.5rem;
+    line-height: 1.1;
+    margin-bottom: 40px;
+  }
+  
+  .desktop-break { display: none; }
+
+  .btn-start-project {
+    padding: 16px 32px;
+    font-size: 1rem;
+    width: auto; 
+  }
+}

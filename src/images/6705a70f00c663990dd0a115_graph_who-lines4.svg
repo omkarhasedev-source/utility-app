@@ -1,0 +1,19 @@
+<svg width="729" height="524" viewBox="0 0 729 524" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_3918_3643" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="729" height="524">
+<rect x="0.158203" y="0.280273" width="728.104" height="522.993" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_3918_3643)">
+<path d="M720 520L720 160L360 160V160C360 358.823 521.178 520 720 520V520Z" stroke="url(#paint0_radial_3918_3643)"/>
+<path d="M0 160L-1.57361e-05 -200L360 -200L360 160L0 160Z" stroke="url(#paint1_radial_3918_3643)"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_3918_3643" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(360 520) rotate(-45) scale(509.117)">
+<stop stop-color="#D4D4D4"/>
+<stop offset="1" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="paint1_radial_3918_3643" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(360 160) rotate(-135) scale(509.117)">
+<stop stop-color="#D4D4D4"/>
+<stop offset="1" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+</defs>
+</svg>

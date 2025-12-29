@@ -1,13 +1,87 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* 1. Regular */
+@font-face {
+  font-family: 'Alliance No.2';
+  src: url('/fonts/66ffe198799934b392eecbce_Alliance-No-2-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* 2. Regular Italic */
+@font-face {
+  font-family: 'Alliance No.2';
+  src: url('/fonts/66ffe196526d3bdeb9fbc772_Alliance-No-2-Regular-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* 3. Light */
+@font-face {
+  font-family: 'Alliance No.2';
+  src: url('/fonts/66ffe196581f82bbd966a2d6_Alliance-No-2-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* 4. Light Italic */
+@font-face {
+  font-family: 'Alliance No.2';
+  src: url('/fonts/66ffe1961c25ea447d2a4f50_Alliance-No-2-Light-Italic.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* 5. Medium */
+@font-face {
+  font-family: 'Alliance No.2';
+  src: url('/fonts/66ffe196dccb96c39b8de21f_Alliance-No-2-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* 6. Medium Italic */
+@font-face {
+  font-family: 'Alliance No.2';
+  src: url('/fonts/66ffe196c99f26a8d2b3a247_Alliance-No-2-Medium-Italic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* 7. SemiBold */
+@font-face {
+  font-family: 'Alliance No.2';
+  src: url('/fonts/66ffe1966993b3be625a030b_Alliance-No-2-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* 8. SemiBold Italic */
+@font-face {
+  font-family: 'Alliance No.2';
+  src: url('/fonts/66ffe19634403e12ef58b8f2_Alliance-No-2-SemiBold-Italic.otf') format('opentype');
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* 9. Bold */
+@font-face {
+  font-family: 'Alliance No.2';
+  src: url('/fonts/66ffe196ebb5246b49ba6f4c_Alliance-No-2-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* 10. Bold Italic */
+@font-face {
+  font-family: 'Alliance No.2';
+  src: url('/fonts/66ffe196a7bfc02a8dc04d86_Alliance-No-2-Bold-Italic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* 11. Alliance No.1 (Different Family) */
+@font-face {
+  font-family: 'Alliance No.1';
+  src: url('/fonts/67d97c7127f81eee0d87367d_Degarism Studio - Alliance No.1 Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
 }

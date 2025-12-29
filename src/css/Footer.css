@@ -1,0 +1,189 @@
+/* Basic Reset for the footer area */
+.utility-footer * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.utility-footer {
+    background-color: #000;
+
+    color: #888888;
+
+    padding: 60px 40px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* --- Wordmark Section --- */
+.footer-wordmark-container {
+    margin-bottom: 60px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.footer-wordmark {
+    width: 100%;
+    height: auto;
+    display: block;
+
+    fill: #333333;
+    opacity: 0.8;
+}
+
+/* --- Navigation Grid Section --- */
+.footer-nav-container {
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+    gap: 25px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #222;
+
+    padding-bottom: 60px;
+}
+
+.footer-column {
+    /* Vertical divider line on the right of each column */
+    border-right: 1px solid #222;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Remove divider from the very last column */
+.footer-column:last-child {
+    border-right: none;
+}
+
+.footer-heading {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 24px;
+    text-transform: capitalize;
+}
+
+.footer-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: #888888;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Hover Effect */
+.footer-link:hover {
+    color: #ffffff;
+    transform: translateX(5px);
+
+}
+
+/* Social icons specifics */
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: fit-content;
+}
+
+.link-arrow {
+    margin-left: 8px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.social-link:hover .link-arrow {
+    opacity: 1;
+}
+
+
+/* --- Bottom Section --- */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #666;
+    padding-top: 20px;
+}
+
+.back-to-top-btn {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.back-to-top-btn:hover {
+    color: #ffffff;
+}
+
+.btt-arrow {
+    margin-right: 8px;
+    /* Ensure the arrow points straight up */
+    transform: rotate(0deg) !important;
+}
+
+
+/* --- Responsiveness --- */
+
+/* Tablet View (e.g., under 1024px) */
+@media (max-width: 1024px) {
+    .utility-footer {
+        padding: 40px 20px 20px;
+    }
+
+    .footer-nav-container {
+
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px 20px;
+
+    }
+
+    .footer-column {
+        border-right: none;
+        padding-right: 0;
+    }
+}
+
+/* Mobile View (e.g., under 768px) */
+@media (max-width: 768px) {
+    .footer-wordmark-container {
+        margin-bottom: 40px;
+    }
+
+    .footer-nav-container {
+        /* Stack everything in 1 column */
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding-bottom: 40px;
+    }
+
+    .footer-heading {
+        margin-bottom: 16px;
+    }
+
+    .footer-bottom {
+        flex-direction: column-reverse;
+        /* Put back to top above copyright on mobile */
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .back-to-top-btn {
+        align-self: flex-start;
+    }
+}

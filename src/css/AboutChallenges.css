@@ -1,0 +1,218 @@
+/* --- GLOBAL RESET --- */
+* {
+  box-sizing: border-box;
+}
+
+/* --- SECTION CONTAINER --- */
+.challenges-section {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 120px 5%;
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+}
+
+.challenges-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  /* Desktop: Image ~55%, Text ~45% */
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* --- LEFT COLUMN: IMAGE WRAPPER --- */
+.challenges-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3.5;
+}
+
+/* 1. The Image Inner Container */
+.challenges-img-inner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-bottom-right-radius: 240px; 
+}
+
+.challenges-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 2. The White Cutout Overlay */
+.white-cutout-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 50%;
+  background-color: #ffffff; 
+  z-index: 10; 
+}
+
+/* --- RIGHT COLUMN: CONTENT --- */
+.challenges-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.challenges-label {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 24px;
+  display: block;
+  font-weight: 500;
+}
+
+.challenges-heading {
+  font-size: 3.5rem;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+  color: #000;
+  max-width: 90%;
+}
+
+/* Button Group */
+.challenges-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.btn-careers {
+  background-color: #1a1a1a;
+  color: #fff;
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-careers:hover {
+  background-color: #333;
+}
+
+.link-about {
+  color: #000;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.link-about:hover {
+  opacity: 0.7;
+}
+
+/* =========================================
+   RESPONSIVE BREAKPOINTS
+   ========================================= */
+
+/* --- 1. LARGE LAPTOP (993px - 1200px) --- */
+@media screen and (max-width: 1200px) {
+  .challenges-heading { font-size: 3rem; }
+  .challenges-img-inner { border-bottom-right-radius: 180px; }
+}
+
+/* --- 2. TABLET & SMALL LAPTOP 
+/* Range: 577px to 992px */
+@media screen and (min-width: 577px) and (max-width: 992px) {
+  .challenges-section { padding: 80px 4%; }
+  
+  .challenges-container {
+    grid-template-columns: 1fr 1fr; /* Equal columns */
+    gap: 40px; /* Reduced gap */
+  }
+
+  /* Image Area */
+  .challenges-image-wrapper {
+    aspect-ratio: 1/1; /* Square-ish on tablet */
+  }
+  
+  .challenges-img-inner {
+    border-bottom-right-radius: 150px;
+  }
+  
+  .white-cutout-overlay {
+    width: 45%; 
+    height: 45%;
+  }
+
+  /* Text Area */
+  .challenges-heading {
+    font-size: 2rem;
+    max-width: 100%;
+  }
+  
+  .btn-careers {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+  }
+}
+
+/* --- 3. MOBILE
+/* Range: 0px to 576px */
+@media screen and (max-width: 576px) {
+  .challenges-section { padding: 80px 20px; }
+  
+  .challenges-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  /* Image Styling for Mobile */
+  .challenges-image-wrapper {
+    width: 100%;
+    
+    aspect-ratio: 1 / 1; 
+  }
+
+  .challenges-img-inner {
+    height: 85%;
+    width: 85%;
+    border-bottom-right-radius: 120px; 
+  }
+
+  /* Cutout Adjustment */
+  .white-cutout-overlay {
+    width: 40%;
+    height: 40%;
+  }
+
+  /* Text Content */
+  .challenges-content {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .challenges-heading {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: 30px;
+  }
+
+  .challenges-btn-group {
+    width: 100%;
+    gap: 20px;
+  }
+  
+  .btn-careers {
+    padding: 14px 28px;
+    font-size: 0.95rem;
+  }
+}

@@ -1,0 +1,469 @@
+/* --- GLOBAL RESET --- */
+* {
+  box-sizing: border-box;
+}
+
+/* --- SECTION CONTAINER --- */
+.methodology-section {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 100px 5%;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+/* --- GRID LAYOUT (Desktop) --- */
+.methodology-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  min-height: 800px;
+
+  /* Grid Setup: 2 Columns */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+    "header image"
+    "list   image";
+  gap: 80px;
+  align-items: start;
+}
+
+/* Assign Grid Areas */
+.section-header { grid-area: header; }
+.accordion-list { grid-area: list; }
+.methodology-image-wrapper { grid-area: image; }
+
+/* --- HEADER --- */
+.small-label {
+  display: block;
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 24px;
+  text-transform: capitalize;
+}
+
+.main-heading {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  font-weight: 400;
+  max-width: 500px;
+  letter-spacing: -0.02em;
+}
+
+/* Mobile Button (Hidden on Desktop) */
+.mobile-services-btn {
+  display: none; /* Hidden by default */
+  margin-top: 30px;
+  background-color: #1a1a1a; 
+  color: #fff;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 500;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+}
+
+/* --- ACCORDION LIST --- */
+.accordion-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.accordion-item {
+  border-bottom: 1px solid #333;
+  padding: 24px 0;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+.accordion-item:last-child {
+  border-bottom: 1px solid #333;
+}
+
+.accordion-item.active {
+  color: #ffffff;
+}
+
+/* Accordion Header */
+.accordion-header {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+
+.accordion-number {
+  font-size: 16px;
+  font-family: monospace;
+  opacity: 0.8;
+  min-width: 25px;
+}
+
+.accordion-title {
+  font-size: 2rem;
+  font-weight: 400;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon-wrapper {
+  display: inline-flex;
+  opacity: 0;
+  transform: translate(-10px, 5px);
+  transition: all 0.3s ease;
+}
+
+.icon-wrapper.show {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Accordion Body */
+.accordion-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  overflow: hidden;
+  will-change: grid-template-rows;
+}
+
+.accordion-item.active .accordion-body {
+  grid-template-rows: 1fr;
+}
+
+.accordion-inner {
+  min-height: 0;
+  padding-left: 45px;
+  padding-top: 20px;
+}
+
+.accordion-desc {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #ccc;
+  margin-bottom: 30px;
+  max-width: 450px;
+}
+
+/* --- VERTICAL LINE LIST --- */
+.tags-list-wrapper {
+  position: relative;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.vertical-line-track {
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 1px;
+  background-color: #333;
+  z-index: 1;
+}
+
+.accordion-tags {
+  list-style: none;
+  padding: 0; margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.tag-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  color: #888;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.tag-indicator-line {
+  position: absolute;
+  left: -20px; top: 0; bottom: 0;
+  width: 1px;
+  background-color: #fff;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 2;
+}
+
+.tag-arrow {
+  opacity: 0;
+  transform: translateX(-5px);
+  transition: all 0.2s ease;
+  color: #888;
+  display: flex;
+  align-items: center;
+}
+
+
+
+.tag-item:hover { color: #fff; 
+ .tag-arrow{
+  color: #fff;
+ }}
+.tag-item:hover .tag-indicator-line { opacity: 1; }
+.tag-item:hover .tag-arrow { opacity: 1; transform: translateX(0); }
+
+
+/* --- IMAGE WRAPPER --- */
+.methodology-image-wrapper {
+  position: -webkit-sticky; 
+  position: sticky;
+  top: 50px; 
+  height: fit-content;
+  display: flex;
+  justify-content: flex-end; 
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 600px; 
+  border-radius: 10px;
+  overflow: hidden; 
+  background-color:black; 
+}
+
+.methodology-img {
+  position: absolute; /* Stack images on top of each other */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  
+  /* Start invisible */
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out; /* Smooth Fade */
+  border-bottom-left-radius: 320px; 
+}
+
+.methodology-img.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Desktop Button (Inside Image) */
+.services-btn.desktop-only {
+  position: absolute;
+  margin-bottom: -30px;
+  margin-left: -30px;
+  bottom: 30px; 
+  left: 30px; 
+  background-color: rgba(30, 30, 30, 0.6);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  z-index: 10; /* Sits on top of active image */
+}
+.services-btn:hover { background-color: #fff; color: #000; }
+
+
+/* --- RESPONSIVE BREAKPOINTS --- */
+
+@media screen and (max-width: 1200px) {
+  .services-btn.desktop-only{
+  margin-bottom: -30px;
+  margin-left: -30px;
+  }
+  .methodology-section { padding: 80px 4%; }
+  .methodology-container { gap: 50px; }
+  .main-heading { font-size: 3rem; }
+  .accordion-title { font-size: 1.75rem; }
+  .methodology-img { border-bottom-left-radius: 280px; }
+}
+
+
+/* Range: 577px to 992px */
+@media screen and (min-width: 577px) and (max-width: 992px) {
+  
+  .methodology-section { 
+    padding: 60px 4%; 
+    min-height: auto; 
+  }
+
+  /* SWITCH TO GRID: Text Left | Image Right */
+  .methodology-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    grid-template-areas: 
+      "header image"
+      "list   image";
+    gap: 40px; 
+    align-items: start;
+    width: 100%;
+    margin: 0;
+  }
+
+  /* A. HEADER (Top Left) */
+  .section-header {
+    grid-area: header;
+    margin-bottom: 0;
+  }
+  
+  .main-heading {
+    font-size: 2.5rem; 
+    line-height: 1.2;
+    max-width: 100%;
+    margin-left: 0; 
+  }
+
+  .mobile-services-btn { 
+    display: none; 
+  }
+
+  /* B. LIST (Bottom Left) */
+  .accordion-list {
+    grid-area: list;
+    margin-top: 20px;
+  }
+  
+  .accordion-title {
+    font-size: 1.5rem;
+  }
+
+  /* C. IMAGE (Right Side - Tall) */
+ .methodology-image-wrapper {
+    grid-area: image;
+    position: sticky;
+    top: 40px;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+ .image-container {
+    width: 100%;
+    height: 600px;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    border-radius: 16px;
+  }
+
+ .methodology-img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-bottom-left-radius: 240px; 
+  }
+
+  /* D. BUTTON (Floating on Image) */
+ .services-btn.desktop-only {
+    display: flex;
+    position: absolute;
+    bottom: 80px; 
+    
+    /* CHANGE: Swap Left for Right */
+    left: auto;    
+    right: 30px;   
+    
+    
+    padding: 10px 24px;
+    font-size: 0.9rem;
+    z-index: 20;
+  }
+}
+
+/* --- 3. MOBILE (Stacked Layout) --- */
+@media screen and (max-width: 576px) {
+  .methodology-section { 
+    padding: 50px 20px; 
+  }
+  
+  /* Flex Container allows reordering */
+  .methodology-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  /* ORDER 1: Header (Title + Services Button) */
+  .section-header {
+    order: 1;
+    margin-bottom: 0;
+  }
+
+  .main-heading { 
+    font-size: 2.25rem; 
+    margin-left: 0; 
+  }
+  
+  /* Reveal Mobile Services Button */
+  .mobile-services-btn {
+    display: inline-flex;
+    margin-top: 25px; 
+    background-color: #1a1a1a;
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* ORDER 2: Image (Moves to middle, below button) */
+  .methodology-image-wrapper {
+    order: 2;
+    width: 100%;
+    margin: 0;
+    position: static; 
+    display: block;
+  }
+  
+  .image-container { 
+    height: 350px; 
+    width: 100%;
+    margin: 0;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .methodology-img { 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom-left-radius: 120px; 
+  }
+  
+  /* Hide the button that usually sits inside the image */
+  .services-btn.desktop-only { 
+    display: none; 
+  }
+
+  .accordion-list {
+    order: 3;
+    margin-top: 0;
+  }
+  
+  .accordion-title { font-size: 1.4rem; }
+  .accordion-number { font-size: 14px; }
+  .accordion-inner { padding-left: 0; }
+  .tag-indicator-line { left: -20px; }
+}

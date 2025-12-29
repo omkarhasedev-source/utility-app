@@ -1,0 +1,422 @@
+/* --- SECTION BASE --- */
+.cases-section {
+  background-color: #ffffff;
+  color: #111;
+  width: 100%;
+  padding: 120px 5% 100px;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
+
+.cases-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 400px 1fr; 
+  gap: 100px;
+  align-items: flex-start;
+}
+
+/* --- LEFT COLUMN (Text) --- */
+.cases-text-col {
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+.cases-title {
+  font-size: 3.1rem;
+  font-weight: 400;
+  line-height: 1;
+  margin-top: -75px;
+  margin-bottom: 110px;
+  letter-spacing: -0.02em;
+}
+
+/* Default Description Style */
+.cases-desc {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #555;
+  max-width: 340px;
+  margin-bottom: 174px;
+}
+
+/* TEXT SWITCHING LOGIC: Default (Desktop) */
+.desc-mobile {
+  display: none; /* Hide mobile text by default */
+}
+.desc-desktop {
+  display: inline; /* Show desktop text by default */
+} 
+
+/* --- BUTTON: "View All" --- */
+.view-all-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #E5E5E5; 
+  color: #000000;            
+  border: none;
+  padding: 14px 32px;
+  border-radius: 100px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.view-all-btn:hover {
+  background-color: #000000; 
+  color: #FFFFFF;            
+}
+
+/* --- MOBILE NAV CONTROLS --- */
+/* Hidden by default on Desktop */
+.mobile-nav-controls {
+  display: none; 
+}
+
+/* --- RIGHT COLUMN (Carousel) --- */
+.cases-carousel-col {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.cases-track {
+  display: flex;
+  gap: 40px;
+  overflow-x: auto;
+  padding-bottom: 40px;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding-right: 5%; 
+}
+.cases-track::-webkit-scrollbar { display: none; }
+
+/* --- CARD ITEM --- */
+.cases-section_item {
+  flex: 0 0 480px; 
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  cursor: pointer;
+  position: relative; 
+}
+
+/* --- THE ARROW BUTTON (Behind Image) --- */
+.arrow-circle {
+  position: absolute;
+  top: 405px;
+  left: 20px;
+  width: 56px;
+  height: 56px;
+  background-color: #E5E5E5; 
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1; 
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.4s ease;
+}
+
+/* --- IMAGE WRAPPER (On Top) --- */
+.cases-section_item_img_wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px; 
+  border-bottom-left-radius: 16px; 
+  transition: border-bottom-left-radius 0.4s ease;
+  height: 480px; 
+  width: 100%;
+  z-index: 2; 
+  background-color: transparent; 
+}
+
+/* --- DESKTOP HOVER EFFECTS --- */
+.cases-section_item:hover .cases-section_item_img_wrapper {
+  border-bottom-left-radius: 240px; 
+}
+
+.cases-section_item:hover .arrow-circle {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.cases-section_item_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  display: block;
+}
+.cases-section_item:hover .cases-section_item_img {
+  transform: scale(1.05);
+}
+
+.arrow-icon-svg {
+  width: 20px;
+  height: 20px;
+  color: #000;
+}
+
+/* --- TEXT CONTENT --- */
+.cases-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-left: 10px;
+}
+
+.client-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #888;
+}
+
+.project-desc {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #111;
+  line-height: 1.3;
+}
+
+/* --- DESKTOP NEXT BUTTON (Floating) --- */
+.cases-next-btn {
+  position: absolute;
+  top: 240px; 
+  transform: translateY(-50%);
+  right: -28px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.3s ease;
+  color: #000;
+}
+.cases-next-btn:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* --- RESPONSIVE QUERIES --- */
+
+/* Tablet / Laptop */
+@media screen and (max-width: 1200px) {
+  .cases-container {
+    grid-template-columns: 300px 1fr;
+    gap: 60px;
+  }
+  .cases-section_item {
+    flex: 0 0 400px;
+  }
+  .cases-section_item_img_wrapper {
+    height: 400px;
+  }
+  .arrow-circle {
+    top: 325px; 
+  }
+}
+
+/* Tablet Portrait */
+@media screen and (max-width: 900px) {
+  .cases-container {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .cases-text-col {
+    position: static;
+    margin-bottom: 40px;
+  }
+  .cases-title { font-size: 2.8rem; margin-bottom: 80px;
+    margin-top: -50px;}
+  
+  .cases-section_item {
+    flex: 0 0 320px;
+  }
+  .cases-section_item_img_wrapper {
+    height: 380px;
+  }
+  .cases-next-btn { display: none; }
+  .arrow-circle { display: none !important; }
+}
+
+
+@media screen and (max-width: 480px) {
+  .cases-section { padding: 80px 20px; }
+
+  .mobile-group-wrapper {
+    display: flex;
+    align-items: center; /* Align vertically center */
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+
+  .cases-desc {
+    margin-bottom: 0; 
+    max-width: 65%;   
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  /* Reveal the Mobile Buttons */
+  .mobile-nav-controls {
+    display: flex; 
+    gap: 10px;
+    flex-shrink: 0; 
+  }
+
+  .mobile-nav-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  
+  .mobile-nav-btn.prev {
+    background-color: #9ca3af; 
+    color: white;
+  }
+  
+  .mobile-nav-btn.next {
+    background-color: #1f2937; 
+    color: white;
+  }
+
+  /* Hide "View All" button */
+  .view-all-btn {
+    display: none !important;
+  }
+
+  /* Card Sizing */
+  .cases-section_item {
+    flex: 0 0 300px;
+  }
+
+  .cases-title { font-size: 2.8rem; margin-top: 2px;}
+
+  .cases-section_item_img_wrapper {
+    height: 360px;
+    
+    border-bottom-left-radius: 120px !important; 
+  }
+
+  .arrow-circle {
+    display: none !important;
+  }
+  .cases-desc{
+    margin-top: -55px;
+    margin-bottom: -60px;
+  }
+
+  .cases-carousel-col{
+     margin-top: -40px;
+  }
+}
+
+
+@media screen and (max-width: 900px) {
+  .cases-section { padding: 80px 20px; }
+
+ 
+  .mobile-group-wrapper {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  
+  .desc-mobile { display: inline; }
+  .desc-desktop { display: none; }
+
+  .cases-desc {
+    margin-bottom: -60px;
+    margin-top: -55px;
+    max-width: 65%;   
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+
+  .cases-title { 
+    font-size: 2.8rem; 
+    margin-top: 2px;
+    margin-bottom: 80px; 
+  }
+
+  /* Reveal the Mobile Buttons */
+  .mobile-nav-controls {
+    display: flex; 
+    gap: 10px;
+    flex-shrink: 0; 
+  }
+
+  .mobile-nav-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  
+  .mobile-nav-btn.prev {
+    background-color: #9ca3af; 
+    color: white;
+  }
+  
+  .mobile-nav-btn.next {
+    background-color: #1f2937; 
+    color: white;
+  }
+
+  /* Hide "View All" button */
+  .view-all-btn {
+    display: none !important;
+  }
+
+  /* Card Sizing */
+  .cases-section_item {
+    flex: 0 0 300px;
+  }
+
+  .cases-title { font-size: 2.8rem; margin-top: 2px;}
+
+  .cases-section_item_img_wrapper {
+    height: 360px;
+    
+    border-bottom-left-radius: 120px !important; 
+  }
+
+  .arrow-circle {
+    display: none !important;
+  }
+  .cases-desc{
+    margin-top: -55px;
+    margin-bottom: -60px;
+  }
+
+  .cases-carousel-col{
+     margin-top: -60px;
+  }
+}

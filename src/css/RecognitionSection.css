@@ -1,0 +1,155 @@
+/* RecognitionSection.css */
+
+* {
+  box-sizing: border-box;
+}
+
+.recognition-section {
+  background-color:rgba(211, 207, 207, 0.938);
+  padding: 6rem 2rem;
+  width: 100%;
+  
+  border-top: 2px solid rgba(0,0,0,0.15);
+  
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #1a1a1a;
+  overflow-x: hidden; 
+}
+
+.recognition-max-width {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* --- HEADLINE --- */
+.recog-header {
+  width: 100%;
+}
+
+.recog-headline {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  margin: 0;
+  max-width: 800px;
+}
+
+/* --- AWARDS TRACK --- */
+.awards-track {
+  display: flex;
+  width: 100%;
+  padding-top: 2rem;
+  gap: 2rem; 
+  border-top: none; 
+}
+
+/* --- INDIVIDUAL AWARD ITEM --- */
+.award-item {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  border-top: 1px solid #1a1a1a; 
+  padding-top: 2rem; 
+  
+  border-left: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+
+  transition: color 0.3s ease, border-color 0.3s ease;
+  color: #1a1a1a;
+  cursor: default;
+}
+
+.award-year {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  transition: opacity 0.3s ease; 
+}
+
+.award-title {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  font-weight: 500;
+  margin: 0;
+}
+
+/*HOVER EFFECTS */
+
+
+.awards-track:hover .award-item {
+  color: #a0a0a0;       
+  border-top-color: #a0a0a0; 
+}
+
+.awards-track .award-item:hover {
+  color: #1a1a1a;       
+  border-top-color: #1a1a1a; 
+}
+
+/* --- RESPONSIVE / MOBILE VIEW --- */
+@media (max-width: 1024px) {
+  .recog-headline {
+    font-size: 2.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .recognition-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .recog-headline {
+    font-size: 2.25rem;
+    margin-bottom: 2rem;
+  }
+
+  /* MOBILE SCROLL  */
+  .awards-track {
+    display: flex;
+    overflow-x: auto; 
+    flex-wrap: nowrap;
+    gap: 1.5rem; 
+    
+    width: 100vw;
+    margin-left: -1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-bottom: 2rem; 
+    
+    /* Scrollbar Styling */
+    scrollbar-width: thin;
+    scrollbar-color: #a0a0a0 transparent;
+  }
+  
+  .awards-track::-webkit-scrollbar {
+    height: 4px;
+    display: block;
+  }
+  
+  .awards-track::-webkit-scrollbar-track {
+    background: transparent;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+  
+  .awards-track::-webkit-scrollbar-thumb {
+    background-color: #a0a0a0;
+    border-radius: 4px;
+  }
+
+  .award-item {
+    flex: 0 0 75%;
+    max-width: 75%;
+    border-left: none; 
+  }
+  
+  .award-title {
+    font-size: 1.25rem;
+  }
+}
