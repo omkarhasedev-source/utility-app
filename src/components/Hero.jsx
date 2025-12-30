@@ -22,6 +22,9 @@ const ArrowIcon = () => (
   </svg>
 );
 
+// --- UPDATE 1: Define your Render URL here ---
+const STRAPI_BASE_URL = 'https://strapi-app-1.onrender.com';
+
 const HeroWorkShowcase = () => {
   const [textIndex, setTextIndex] = useState(0);
   const [isHeroVisible, setIsHeroVisible] = useState(false);
@@ -29,10 +32,8 @@ const HeroWorkShowcase = () => {
   
   // State for CMS Data
   const [posts, setPosts] = useState([]);
-  const [heroWords, setHeroWords] = useState([]); // Initialize empty
+  const [heroWords, setHeroWords] = useState([]); 
   const [videoUrl, setVideoUrl] = useState(null);
-
- // const API = "http://localhost:1337";
 
   const clientLogos = [
     { name: 'Samsung', src: imgSamsung },
@@ -48,40 +49,38 @@ const HeroWorkShowcase = () => {
   useEffect(() => {
     const fetchCmsData = async () => {
       try {
-        // A. Fetch Main Heading (Block Content)
-        const headingReq = await fetch('http://10.172.25.197:1337/api/hero-headings');
+        // --- UPDATE 2: Use the new Base URL for fetching ---
+        
+        // A. Fetch Main Heading
+        const headingReq = await fetch(`${STRAPI_BASE_URL}/api/hero-headings`);
         const headingRes = await headingReq.json();
         setPosts(headingRes.data);
 
         // B. Fetch Carousel Words
-        const wordsReq = await fetch('http://10.172.25.197:1337/api/hero-carousels');
+        const wordsReq = await fetch(`${STRAPI_BASE_URL}/api/hero-carousels`);
         const wordsRes = await wordsReq.json();
 
         // C. Process Carousel Data
         if (wordsRes.data && wordsRes.data.length > 0) {
           const apiWords = wordsRes.data.map((item) => {
-            // Handle Strapi v4 (attributes) vs v5 structure
             return item.attributes ? item.attributes.Word : item.Word;
           });
           setHeroWords(apiWords);
         } else {
-            // Optional: Set fallback words if API returns empty
             setHeroWords(["Digital Products", "World Class Apps"]); 
         }
 
-        // D. Fetch Hero Video
-        const videoReq = await fetch('http://10.172.25.197:1337/api/hero-video?populate=*');
+        // D. Fetch Hero Video (Note the ?populate=* is still required)
+        const videoReq = await fetch(`${STRAPI_BASE_URL}/api/hero-video?populate=*`);
         const videoRes = await videoReq.json();
 
         if (videoRes.data) {
-           // Handle Strapi v4 vs v5 structure dynamically
-           // We look for 'Video' field. If your field is named 'Media', change .Video to .Media
            const attributes = videoRes.data.attributes || videoRes.data;
-           // Check both nested data structure (v4) and direct structure (v5)
            const videoData = attributes.Video?.data?.attributes || attributes.Video;
 
            if (videoData && videoData.url) {
-             setVideoUrl(`http://10.172.25.197:1337${videoData.url}`);
+             // --- UPDATE 3: Combine Base URL + Video Path ---
+             setVideoUrl(`${STRAPI_BASE_URL}${videoData.url}`);
            }
         }
 
@@ -93,16 +92,14 @@ const HeroWorkShowcase = () => {
     fetchCmsData();
   }, []);
 
-  // 2. ANIMATION TIMERS (Dependent on heroWords)
+  // 2. ANIMATION TIMERS
   useEffect(() => {
-    // Only start the carousel interval if we have words to cycle through
     if (heroWords.length === 0) return;
 
     const carouselInterval = setInterval(() => {
       setTextIndex((prevIndex) => (prevIndex + 1) % heroWords.length);
     }, 3000);
 
-    // Initial fade-in animations
     const heroTimer = setTimeout(() => {
       setIsHeroVisible(true);
     }, 1500);
@@ -135,7 +132,6 @@ const HeroWorkShowcase = () => {
             </span>
             <br />
             
-            {/* Render Carousel only if we have words */}
             {heroWords.length > 0 && (
               <span className="scrolling-text-wrapper">
                 <span key={heroWords[textIndex]} className="text-dark slide-up-text">
@@ -158,7 +154,7 @@ const HeroWorkShowcase = () => {
 
         <div className="showcase-content-grid">
 
-          {/* LEFT COLUMN: Video with Reverse L Structure */}
+          {/* LEFT COLUMN: Video */}
           <div className="left-column-wrapper">
             <div className="l-shape-cutout">
               <a href="#work" className="floating-work-btn">
@@ -166,7 +162,9 @@ const HeroWorkShowcase = () => {
               </a>
             </div>
             <div className="video-container">
-              <video
+              {/* Ensure videoUrl is loaded before rendering */}
+              {videoUrl ? (
+                  <video
                   className="feature-video"
                   src={videoUrl}
                   autoPlay
@@ -174,6 +172,10 @@ const HeroWorkShowcase = () => {
                   muted
                   playsInline
                 />
+              ) : (
+                /* Optional Fallback/Loading state */
+                <div style={{width:'100%', height:'100%', background:'#000'}}></div>
+              )}
             </div>
           </div>
 

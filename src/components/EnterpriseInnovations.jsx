@@ -15,8 +15,8 @@ const ArrowRightIcon = () => (
   </svg>
 );
 
-//STRAPI BASE URL
-const STRAPI_BASE_URL = 'http://10.172.25.197:1337';
+// --- UPDATE 1: Point to your live Render URL ---
+const STRAPI_BASE_URL = 'https://strapi-app-1.onrender.com';
 
 const EnterpriseInnovations = () => {
   const scrollRef = useRef(null);
@@ -37,12 +37,16 @@ const EnterpriseInnovations = () => {
     }
   };
 
-  //Fix Image URLs for Mobile ---
+  // --- UPDATE 2: Simplified Image Helper ---
   const getStrapiMedia = (url) => {
     if (!url) return null;
+    
+    // If the URL is absolute (e.g. Cloudinary or external), return it as is
     if (url.startsWith('http') || url.startsWith('//')) {
-      return url.replace('localhost', '10.172.25.197');
+      return url;
     }
+    
+    // Otherwise, prepend the Render URL
     return `${STRAPI_BASE_URL}${url}`;
   };
 
