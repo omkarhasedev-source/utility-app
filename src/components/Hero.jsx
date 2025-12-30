@@ -22,7 +22,6 @@ const ArrowIcon = () => (
   </svg>
 );
 
-// --- UPDATE 1: Define your Render URL here ---
 const STRAPI_BASE_URL = 'https://strapi-app-1.onrender.com';
 
 const HeroWorkShowcase = () => {
@@ -45,12 +44,21 @@ const HeroWorkShowcase = () => {
 
   const seamlessLogos = [...clientLogos, ...clientLogos, ...clientLogos];
 
+  // --- HELPER FUNCTION: Fix URL ---
+  const getStrapiMedia = (url) => {
+    if (!url) return null;
+    // If it's already a full Cloudinary URL, return it as is
+    if (url.startsWith('http') || url.startsWith('//')) {
+        return url;
+    }
+    // Otherwise, prepend the Render URL
+    return `${STRAPI_BASE_URL}${url}`;
+  };
+
   // 1. FETCH DATA FROM STRAPI
   useEffect(() => {
     const fetchCmsData = async () => {
       try {
-        // --- UPDATE 2: Use the new Base URL for fetching ---
-        
         // A. Fetch Main Heading
         const headingReq = await fetch(`${STRAPI_BASE_URL}/api/hero-headings`);
         const headingRes = await headingReq.json();
@@ -70,7 +78,7 @@ const HeroWorkShowcase = () => {
             setHeroWords(["Digital Products", "World Class Apps"]); 
         }
 
-        // D. Fetch Hero Video (Note the ?populate=* is still required)
+        // D. Fetch Hero Video
         const videoReq = await fetch(`${STRAPI_BASE_URL}/api/hero-video?populate=*`);
         const videoRes = await videoReq.json();
 
@@ -79,8 +87,9 @@ const HeroWorkShowcase = () => {
            const videoData = attributes.Video?.data?.attributes || attributes.Video;
 
            if (videoData && videoData.url) {
-             // --- UPDATE 3: Combine Base URL + Video Path ---
-             setVideoUrl(`${STRAPI_BASE_URL}${videoData.url}`);
+             // Use the helper to determine the correct URL
+             const correctUrl = getStrapiMedia(videoData.url);
+             setVideoUrl(correctUrl);
            }
         }
 
@@ -162,7 +171,6 @@ const HeroWorkShowcase = () => {
               </a>
             </div>
             <div className="video-container">
-              {/* Ensure videoUrl is loaded before rendering */}
               {videoUrl ? (
                   <video
                   className="feature-video"
@@ -173,7 +181,6 @@ const HeroWorkShowcase = () => {
                   playsInline
                 />
               ) : (
-                /* Optional Fallback/Loading state */
                 <div style={{width:'100%', height:'100%', background:'#000'}}></div>
               )}
             </div>
